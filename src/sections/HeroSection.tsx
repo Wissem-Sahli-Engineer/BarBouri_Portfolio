@@ -33,7 +33,7 @@ export default function HeroSection() {
       </div>
 
       <div className="mt-auto flex items-end justify-between px-6 pb-7 sm:pb-8 md:px-10 md:pb-10">
-        <FadeIn delay={0.35} y={20}>
+        <FadeIn delay={0.35} y={20} className="relative z-20">
           <p
             className="max-w-[160px] font-light uppercase leading-snug tracking-wide text-[#D7E2EA] sm:max-w-[220px] md:max-w-[260px]"
             style={{ fontSize: 'clamp(0.75rem, 1.4vw, 1.5rem)' }}
@@ -46,7 +46,7 @@ export default function HeroSection() {
         </FadeIn>
       </div>
 
-      <div className="absolute left-1/2 top-1/2 z-10 w-[220px] -translate-x-1/2 -translate-y-1/2 sm:bottom-14 sm:top-auto sm:w-[280px] sm:translate-y-0 md:w-[340px] lg:w-[420px]">
+      <div className="pointer-events-none absolute left-1/2 top-1/2 z-10 w-[280px] -translate-x-1/2 -translate-y-1/2 sm:bottom-0 sm:top-auto sm:w-[360px] sm:translate-y-0 md:w-[440px] lg:w-[520px]">
         <FadeIn delay={0.6} y={30}>
           <Magnet
             padding={150}
@@ -54,16 +54,12 @@ export default function HeroSection() {
             activeTransition="transform 0.3s ease-out"
             inactiveTransition="transform 0.6s ease-in-out"
           >
-            <div
-              className="rounded-full p-[3px]"
-            >
-              <img
-                src="/sarra.png"
-                alt="Sarra Bouraoui"
-                className="block w-full rounded-full bg-[#0C0C0C]"
-                draggable={false}
-              />
-            </div>
+            <img
+              src="/sarra.png"
+              alt="Sarra Bouraoui"
+              className="block w-full select-none"
+              draggable={false}
+            />
           </Magnet>
         </FadeIn>
       </div>

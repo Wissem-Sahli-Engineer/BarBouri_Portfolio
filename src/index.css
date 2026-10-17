@@ -23,3 +23,39 @@ body,
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+.flow-dash {
+  stroke-dasharray: 6 8;
+  animation: flow-dash 1.2s linear infinite;
+}
+
+.pulse {
+  animation: pulse 2.4s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@keyframes flow-dash {
+  to {
+    stroke-dashoffset: -28;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.55;
+    transform: scale(1.35);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flow-dash,
+  .pulse {
+    animation: none;
+  }
+}

@@ -1,21 +1,16 @@
 import { useEffect, useRef, useState } from 'react';
-import { marqueeImages } from '../data';
+import { workTilesRow1, workTilesRow2 } from '../components/WorkTiles';
 
-const row1 = marqueeImages.slice(0, 11);
-const row2 = marqueeImages.slice(11);
+type Tile = () => JSX.Element;
 
-function Row({ images, transform }: { images: string[]; transform: string }) {
-  const tripled = [...images, ...images, ...images];
+function Row({ tiles, transform }: { tiles: Tile[]; transform: string }) {
+  const tripled = [...tiles, ...tiles, ...tiles];
   return (
     <div className="flex gap-3" style={{ transform, willChange: 'transform' }}>
-      {tripled.map((src, i) => (
-        <img
-          key={i}
-          src={src}
-          alt=""
-          loading="lazy"
-          className="h-[270px] w-[420px] flex-shrink-0 rounded-2xl object-cover"
-        />
+      {tripled.map((TileVisual, i) => (
+        <div key={i} className="h-[270px] w-[420px] flex-shrink-0 [&>div]:!rounded-2xl">
+          <TileVisual />
+        </div>
       ))}
     </div>
   );
@@ -39,8 +34,8 @@ export default function MarqueeSection() {
   return (
     <section ref={ref} className="overflow-hidden bg-[#0C0C0C] pb-10 pt-24 sm:pt-32 md:pt-40">
       <div className="flex flex-col gap-3">
-        <Row images={row1} transform={`translateX(${offset - 200}px)`} />
-        <Row images={row2} transform={`translateX(${-(offset - 200)}px)`} />
+        <Row tiles={workTilesRow1} transform={`translateX(${offset - 200}px)`} />
+        <Row tiles={workTilesRow2} transform={`translateX(${-(offset - 200)}px)`} />
       </div>
     </section>
   );

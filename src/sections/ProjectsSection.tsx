@@ -3,6 +3,7 @@ import type { MotionValue } from 'framer-motion';
 import { useRef } from 'react';
 import FadeIn from '../components/FadeIn';
 import LiveProjectButton from '../components/LiveProjectButton';
+import { projectVisuals } from '../components/ProjectVisuals';
 import { projects } from '../data';
 
 type Project = (typeof projects)[number];
@@ -17,7 +18,7 @@ interface CardProps {
 function ProjectCard({ project, index, total, progress }: CardProps) {
   const targetScale = 1 - (total - 1 - index) * 0.03;
   const scale = useTransform(progress, [index / total, 1], [1, targetScale]);
-  const [img1, img2, img3] = project.images;
+  const [TopLeft, BottomLeft, Right] = projectVisuals[project.id];
 
   return (
     <div className="sticky top-24 flex h-[85vh] items-start justify-center md:top-32">
@@ -49,29 +50,17 @@ function ProjectCard({ project, index, total, progress }: CardProps) {
         </div>
 
         <div className="flex gap-3 sm:gap-4">
-          <div className="flex w-[40%] flex-col gap-3 sm:gap-4">
-            <img
-              src={img1}
-              alt=""
-              loading="lazy"
-              className="w-full rounded-[40px] object-cover sm:rounded-[50px] md:rounded-[60px]"
-              style={{ height: 'clamp(130px, 16vw, 230px)' }}
-            />
-            <img
-              src={img2}
-              alt=""
-              loading="lazy"
-              className="w-full rounded-[40px] object-cover sm:rounded-[50px] md:rounded-[60px]"
-              style={{ height: 'clamp(160px, 22vw, 340px)' }}
-            />
+          {/* On phones only the main diagram is shown, full width, so it stays legible. */}
+          <div className="hidden w-[40%] flex-col gap-3 sm:flex sm:gap-4">
+            <div style={{ height: 'clamp(130px, 16vw, 230px)' }}>
+              <TopLeft />
+            </div>
+            <div style={{ height: 'clamp(160px, 22vw, 340px)' }}>
+              <BottomLeft />
+            </div>
           </div>
-          <div className="w-[60%]">
-            <img
-              src={img3}
-              alt=""
-              loading="lazy"
-              className="h-full w-full rounded-[40px] object-cover sm:rounded-[50px] md:rounded-[60px]"
-            />
+          <div className="h-[340px] w-full sm:h-auto sm:w-[60%]">
+            <Right />
           </div>
         </div>
       </motion.div>
