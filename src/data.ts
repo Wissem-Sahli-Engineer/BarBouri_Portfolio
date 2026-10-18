@@ -61,4 +61,12 @@ export const projects = [
       'A Laravel / Nuxt back-office with product web scraping, plus a 6-step Facebook Ads workflow fully automated with n8n.',
     link: profile.github,
   },
+  {
+    id: 'tunav',
+    name: 'Tunav Website',
+    category: 'Internship · Tunav — Full Stack',
+    description:
+      'Developed and deployed the Tunav company website end to end — Angular front-end and .NET back-end — all the way to production.',
+    link: profile.github,
+  },
 ];

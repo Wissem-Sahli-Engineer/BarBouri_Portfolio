@@ -470,8 +470,126 @@ function N8nWorkflow() {
   );
 }
 
+/* ---------- 04 · Tunav ---------- */
+
+const STACK = [
+  { label: 'Angular', sub: 'front-end' },
+  { label: '.NET', sub: 'REST API' },
+  { label: 'SQL', sub: 'database' },
+];
+
+function TunavStack() {
+  return (
+    <Frame glow="#DD0031">
+      <Svg viewBox="0 0 400 200">
+        <text x="20" y="30" fill={LIGHT} fontSize="12" opacity="0.5" letterSpacing="2">
+          FULL STACK
+        </text>
+        {STACK.map(({ label, sub }, i) => {
+          const x = 20 + i * 128;
+          return (
+            <g key={label}>
+              {i > 0 && (
+                <line x1={x - 20} y1="110" x2={x} y2="110" stroke={LIGHT} strokeOpacity="0.4" strokeWidth="2" className="flow-dash" />
+              )}
+              <rect x={x} y="68" width="108" height="84" rx="20" fill={PANEL} stroke={i === 0 ? 'url(#brand)' : PANEL_STROKE} strokeWidth="1.5" />
+              <text x={x + 54} y="106" fill={LIGHT} fontSize="17" fontWeight="600" textAnchor="middle">
+                {label}
+              </text>
+              <text x={x + 54} y="128" fill={LIGHT} fontSize="11" opacity="0.55" textAnchor="middle">
+                {sub}
+              </text>
+            </g>
+          );
+        })}
+      </Svg>
+    </Frame>
+  );
+}
+
+const DELIVERY = ['Design', 'Develop', 'Test', 'Deploy'];
+
+function TunavDelivery() {
+  return (
+    <Frame glow={ORANGE}>
+      <Svg viewBox="0 0 400 280">
+        <text x="20" y="34" fill={LIGHT} fontSize="15" fontWeight="500" letterSpacing="2">
+          JUNE → JULY 2025
+        </text>
+        <line x1="44" y1="74" x2="44" y2="218" stroke={PANEL_STROKE} strokeWidth="3" />
+        <line x1="44" y1="74" x2="44" y2="218" stroke="url(#brand)" strokeWidth="3" className="flow-dash" />
+        {DELIVERY.map((step, i) => {
+          const y = 74 + i * 48;
+          return (
+            <g key={step}>
+              <circle cx="44" cy={y} r="12" fill={PANEL} stroke="url(#brand)" strokeWidth="2.5" />
+              <path d={`M38 ${y} l4 4 l8 -9`} fill="none" stroke={LIGHT} strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+              <text x="70" y={y + 5} fill={LIGHT} fontSize="15">
+                {step}
+              </text>
+            </g>
+          );
+        })}
+        <rect x="230" y="198" width="150" height="40" rx="20" fill="#5BD69A1F" stroke="#5BD69A" strokeOpacity="0.7" />
+        <circle cx="252" cy="218" r="5" fill="#5BD69A" className="pulse" />
+        <text x="268" y="223" fill="#5BD69A" fontSize="13" fontWeight="500">
+          In production
+        </text>
+      </Svg>
+    </Frame>
+  );
+}
+
+function TunavWebsite() {
+  return (
+    <Frame glow="#DD0031">
+      <Svg viewBox="0 0 600 480">
+        {/* desktop browser */}
+        <rect x="30" y="40" width="470" height="350" rx="22" fill="#101014" stroke={PANEL_STROKE} />
+        <circle cx="56" cy="64" r="5" fill="#FF5F57" />
+        <circle cx="72" cy="64" r="5" fill="#FEBC2E" />
+        <circle cx="88" cy="64" r="5" fill="#28C840" />
+        <rect x="140" y="54" width="250" height="20" rx="10" fill={PANEL} />
+        <text x="265" y="68" fill={LIGHT} fontSize="11" opacity="0.6" textAnchor="middle">
+          tunav
+        </text>
+        <line x1="30" y1="88" x2="500" y2="88" stroke={PANEL_STROKE} />
+        <text x="54" y="118" fill={LIGHT} fontSize="15" fontWeight="700" letterSpacing="1">
+          TUNAV
+        </text>
+        {[0, 1, 2, 3].map((i) => (
+          <rect key={i} x={300 + i * 48} y="110" width="36" height="7" rx="3.5" fill={LIGHT} opacity="0.35" />
+        ))}
+        <rect x="54" y="138" width="422" height="120" rx="18" fill="url(#brand)" opacity="0.85" />
+        <rect x="78" y="168" width="190" height="14" rx="7" fill="#fff" opacity="0.9" />
+        <rect x="78" y="192" width="140" height="9" rx="4.5" fill="#fff" opacity="0.55" />
+        <rect x="78" y="216" width="84" height="24" rx="12" fill="#fff" opacity="0.95" />
+        {[0, 1, 2].map((i) => (
+          <g key={i}>
+            <rect x={54 + i * 145} y="276" width="132" height="92" rx="16" fill={PANEL} stroke={PANEL_STROKE} />
+            <rect x={70 + i * 145} y="292" width="30" height="30" rx="9" fill="url(#brand)" opacity="0.6" />
+            <rect x={70 + i * 145} y="334" width="90" height="7" rx="3.5" fill={LIGHT} opacity="0.5" />
+            <rect x={70 + i * 145} y="348" width="60" height="7" rx="3.5" fill={LIGHT} opacity="0.25" />
+          </g>
+        ))}
+        {/* responsive phone view */}
+        <rect x="450" y="200" width="120" height="240" rx="22" fill="#0C0C0F" stroke={LIGHT} strokeOpacity="0.35" strokeWidth="2" />
+        <rect x="490" y="210" width="40" height="6" rx="3" fill={LIGHT} opacity="0.3" />
+        <text x="466" y="240" fill={LIGHT} fontSize="10" fontWeight="700" letterSpacing="1">
+          TUNAV
+        </text>
+        <rect x="462" y="252" width="96" height="70" rx="12" fill="url(#brand)" opacity="0.85" />
+        {[0, 1].map((i) => (
+          <rect key={i} x="462" y={334 + i * 46} width="96" height="38" rx="10" fill={PANEL} stroke={PANEL_STROKE} />
+        ))}
+      </Svg>
+    </Frame>
+  );
+}
+
 export const projectVisuals: Record<string, [() => JSX.Element, () => JSX.Element, () => JSX.Element]> = {
   terraform: [PromptChat, Pipeline, AgentGraph],
   quantum: [QuantumCircuit, EmbeddingClusters, CommunityGraph],
   ads: [ScrapedProducts, BackOffice, N8nWorkflow],
+  tunav: [TunavStack, TunavDelivery, TunavWebsite],
 };

@@ -57,6 +57,7 @@ function StatTile({ value, label, sub, glow }: { value: string; label: string; s
 const [PromptChat, Pipeline, AgentGraph] = projectVisuals.terraform;
 const [QuantumCircuit, EmbeddingClusters, CommunityGraph] = projectVisuals.quantum;
 const [ScrapedProducts, BackOffice, N8nWorkflow] = projectVisuals.ads;
+const [TunavStack, , TunavWebsite] = projectVisuals.tunav;
 
 const terraformCode = () => (
   <CodeTile
@@ -132,6 +133,7 @@ export const workTilesRow1 = [
   resourcesStat,
   gitlabCode,
   ScrapedProducts,
+  TunavWebsite,
 ];
 
 export const workTilesRow2 = [
@@ -144,4 +146,5 @@ export const workTilesRow2 = [
   N8nWorkflow,
   n8nStat,
   BackOffice,
+  TunavStack,
 ];
